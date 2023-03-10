@@ -40,3 +40,13 @@ function operate(operator, a, b) {
 
     }
 }
+
+// Targeting the number buttons
+
+const screenDisplay = document.querySelector('#display');
+const newPress = document.querySelectorAll(".numberBtns");
+newPress.forEach(btn => {
+    btn.addEventListener('click', e => {
+        screenDisplay.innerHTML = e.target.textContent;
+    });
+})
