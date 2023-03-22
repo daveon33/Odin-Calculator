@@ -1,6 +1,10 @@
 // Basic calculator functions
 
 let displayValue = 0;
+let firstValue = 0;
+let secondValue = 0;
+let option  = '';
+
 
 function sum(a, b) {
     currentCount += a + b;
@@ -43,7 +47,7 @@ function operate(operator, a, b) {
 
 // Targeting the number buttons
 
-const screenDisplay = document.querySelector('#display');
+const screenDisplay = document.querySelector('#displayContent');
 const newPress = document.querySelectorAll(".numberBtns");
 newPress.forEach(btn => {
     btn.addEventListener('click', e => {
