@@ -7,19 +7,19 @@ let option  = '';
 
 
 function sum(a, b) {
-    currentCount += a + b;
+    displayValue += a + b;
 }
 
 function substract(a, b) {
-    currentCount += a - b;
+    displayValue += a - b;
 }
 
 function multiply(a, b) {
-    currentCount += a * b;
+    displayValue += a * b;
 }
 
 function divide(a, b) {
-    currentCount += a / b;
+    displayValue += a / b;
 }
 
 function operate(operator, a, b) {
@@ -70,8 +70,11 @@ operationPress.forEach(btn => {
 
 const enterPress = document.querySelector('#enter');
 enterPress.addEventListener('click', e => {
-secondValue = screenDisplay.innerHTML.match('[\+\-\*\/]\d+')[0];
-    console.log(secondValue);
+    let currentOperation = screenDisplay.innerHTML;
+    const regex = /[^0-9]+\d+/;
+    secondValue = currentOperation.match(regex)[0].substring(1);
+    operate(option, firstValue, secondValue);
+    screenDisplay.innerHTML = displayValue;
 });
 
 // Make the clear button reset the display
