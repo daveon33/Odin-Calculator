@@ -7,19 +7,43 @@ let option  = '';
 
 
 function sum(a, b) {
-    displayValue += a + b;
+    if(displayValue == 0) {
+        displayValue = a + b;
+    } else {
+        displayValue += b;
+    }
 }
 
 function substract(a, b) {
-    displayValue += a - b;
+    if(displayValue == 0) {
+        displayValue = a - b;
+    } else {
+        displayValue -= b;
+    }
 }
 
 function multiply(a, b) {
-    displayValue += a * b;
+    if(displayValue == 0) {
+        displayValue = a * b;
+    } else {
+        displayValue *= b;
+    }
 }
 
 function divide(a, b) {
-    displayValue += a / b;
+    if(displayValue == 0) {
+        if(b == 0) {
+            screenDisplay.innerHTML = 'Error';
+        } else {
+            displayValue = a / b;
+        }
+    } else {
+        if(b == 0) {
+            screenDisplay.innerHTML = 'Error';
+        } else {
+            displayValue /= b;
+        }
+    }
 }
 
 function operate(operator, a, b) {
@@ -63,8 +87,6 @@ operationPress.forEach(btn => {
         screenDisplay.innerHTML += e.target.textContent;
         firstValue = screenDisplay.innerHTML.substring(0, screenDisplay.innerHTML.length - 1);
         option = screenDisplay.innerHTML.substring(screenDisplay.innerHTML.length - 1);
-        console.log(firstValue);
-        console.log(option);
     });
 });
 
