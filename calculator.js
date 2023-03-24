@@ -63,6 +63,8 @@ operationPress.forEach(btn => {
         screenDisplay.innerHTML += e.target.textContent;
         firstValue = screenDisplay.innerHTML.substring(0, screenDisplay.innerHTML.length - 1);
         option = screenDisplay.innerHTML.substring(screenDisplay.innerHTML.length - 1);
+        console.log(firstValue);
+        console.log(option);
     });
 });
 
@@ -73,8 +75,11 @@ enterPress.addEventListener('click', e => {
     let currentOperation = screenDisplay.innerHTML;
     const regex = /[^0-9]+\d+/;
     secondValue = currentOperation.match(regex)[0].substring(1);
-    operate(option, firstValue, secondValue);
+    operate(option, parseFloat(firstValue), parseFloat(secondValue));
     screenDisplay.innerHTML = displayValue;
+    firstValue = displayValue;
+    option = '';
+    secondValue = 0;
 });
 
 // Make the clear button reset the display
@@ -82,6 +87,7 @@ enterPress.addEventListener('click', e => {
 const clearPress = document.querySelector('#clear');
 clearPress.addEventListener('click', e => {
     screenDisplay.innerHTML = '';
+    displayValue = 0;
 });
 
 // Make the delete button erase the last digit
